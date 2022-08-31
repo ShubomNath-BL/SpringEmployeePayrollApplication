@@ -1,5 +1,6 @@
 package com.example.employeepayrollapplication.controller;
 
+import com.example.employeepayrollapplication.dto.EmployeeDTO;
 import com.example.employeepayrollapplication.entity.EmployeeEntity;
 import com.example.employeepayrollapplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/post")
-    public EmployeeEntity addEmployee(@RequestBody EmployeeEntity employee){
+    public EmployeeEntity addEmployee(@RequestBody EmployeeDTO employee){
         EmployeeEntity response = service.saveData(employee);
         return response;
     }

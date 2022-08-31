@@ -1,42 +1,15 @@
-package com.example.employeepayrollapplication.entity;
+package com.example.employeepayrollapplication.dto;
 
-
-import com.example.employeepayrollapplication.dto.EmployeeDTO;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
-public class EmployeeEntity {
+public class EmployeeDTO {
 
-    @Id
-    @GeneratedValue
-    private long employeeId;
     private String employeeName;
     private String profilePic;
     private String gender;
     private long salary;
     private String department;
     private LocalDate startDate;
-
-    public EmployeeEntity(EmployeeDTO employee) {
-        this.employeeName = employee.getEmployeeName();
-        this.profilePic = employee.getProfilePic();
-        this.gender = employee.getGender();
-        this.salary = employee.getSalary();
-        this.department = employee.getDepartment();
-        this.startDate = employee.getStartDate();
-    }
-
-    public long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = employeeId;
-    }
 
     public String getEmployeeName() {
         return employeeName;
@@ -86,8 +59,7 @@ public class EmployeeEntity {
         this.startDate = startDate;
     }
 
-    public EmployeeEntity(long employeeId, String employeeName, String profilePic, String gender, long salary, String department, LocalDate startDate) {
-        this.employeeId = employeeId;
+    public EmployeeDTO(String employeeName, String profilePic, String gender, long salary, String department, LocalDate startDate) {
         this.employeeName = employeeName;
         this.profilePic = profilePic;
         this.gender = gender;
@@ -96,14 +68,13 @@ public class EmployeeEntity {
         this.startDate = startDate;
     }
 
-    public EmployeeEntity() {
+    public EmployeeDTO() {
     }
 
     @Override
     public String toString() {
-        return "EmployeeEntity{" +
-                "employeeId=" + employeeId +
-                ", employeeName='" + employeeName + '\'' +
+        return "EmployeeDTO{" +
+                "employeeName='" + employeeName + '\'' +
                 ", profilePic='" + profilePic + '\'' +
                 ", gender='" + gender + '\'' +
                 ", salary=" + salary +
