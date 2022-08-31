@@ -1,9 +1,12 @@
 package com.example.employeepayrollapplication.controller;
 
 import com.example.employeepayrollapplication.dto.EmployeeDTO;
+import com.example.employeepayrollapplication.dto.ResponseDTO;
 import com.example.employeepayrollapplication.entity.EmployeeEntity;
 import com.example.employeepayrollapplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,9 +29,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/post")
-    public EmployeeEntity addEmployee(@RequestBody EmployeeDTO employee){
+    public ResponseEntity<ResponseDTO> addEmployee(@RequestBody EmployeeDTO employee){
         EmployeeEntity response = service.saveData(employee);
-        return response;
+        ResponseDTO responseDTO = new ResponseDTO("Data posted Successfully", response);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
