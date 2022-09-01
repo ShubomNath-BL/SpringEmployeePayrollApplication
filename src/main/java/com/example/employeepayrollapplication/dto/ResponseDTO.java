@@ -4,6 +4,8 @@ import com.example.employeepayrollapplication.entity.EmployeeEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class ResponseDTO {
@@ -14,5 +16,11 @@ public class ResponseDTO {
     public ResponseDTO(String string, EmployeeEntity response) {
         this.message = string;
         this.obj = response;
+    }
+
+
+    public ResponseDTO(String string1, List<String> errMsg) {
+        this.message = string1;
+        this.obj = errMsg;
     }
 }
