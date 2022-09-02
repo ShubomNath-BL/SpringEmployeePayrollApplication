@@ -7,6 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +20,7 @@ public class EmployeeDTO {
     private String gender;
     @Min(value = 300000, message = "Invalid Salary")
     private long salary;
-    private String department;
+    private List<String> department;
     private LocalDate startDate;
 
 }
