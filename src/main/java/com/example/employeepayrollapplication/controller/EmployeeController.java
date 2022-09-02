@@ -4,6 +4,7 @@ import com.example.employeepayrollapplication.dto.EmployeeDTO;
 import com.example.employeepayrollapplication.dto.ResponseDTO;
 import com.example.employeepayrollapplication.entity.EmployeeEntity;
 import com.example.employeepayrollapplication.service.EmployeeService;
+import com.example.employeepayrollapplication.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RequestMapping("/emp")
 public class EmployeeController {
     @Autowired
-    EmployeeService service;
+    IEmployeeService service;
 
     @RequestMapping(value = {"", "/", "hello"}, method = RequestMethod.GET)
     public String welcome(){
@@ -55,5 +56,12 @@ public class EmployeeController {
     @GetMapping("delete/{id}")
     public EmployeeEntity deleteEmpData(@PathVariable long id){
         return service.deleteData(id);
+    }
+
+    @GetMapping("/getDepartment/{department}")
+    public ResponseEntity<ResponseDTO>getEmployeeData(@PathVariable String department){
+        List<EmployeeEntity> empList = service.getEmployeeDataByDepartment(department);
+        ResponseDTO responseDTO = new ResponseDTO("Call was successful...!", empList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements IEmployeeService{
     @Autowired
     Repo repository;
     public String welcomeMessage() {
@@ -49,5 +49,10 @@ public class EmployeeService {
     public EmployeeEntity deleteData(long id) {
         repository.deleteById(id);
         return null;
+    }
+
+    @Override
+    public List<EmployeeEntity> getEmployeeDataByDepartment(String department) {
+        return repository.findEmployeeByDepartment(department);
     }
 }

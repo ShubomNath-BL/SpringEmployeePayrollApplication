@@ -19,8 +19,13 @@ public class ResponseDTO {
     }
 
 
-    public ResponseDTO(String string1, List<String> errMsg) {
+    public ResponseDTO(String string1, String errMsg) {
         this.message = string1;
         this.obj = errMsg;
+    }
+
+    public ResponseDTO(String message, List<EmployeeEntity> empList) {
+        this.message = message;
+        this.obj = empList;
     }
 }

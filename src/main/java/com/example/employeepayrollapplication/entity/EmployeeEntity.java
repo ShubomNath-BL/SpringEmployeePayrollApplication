@@ -16,8 +16,8 @@ import java.util.List;
 public class EmployeeEntity {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue
+    @Column(name = "employee_Id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long employeeId;
     @Column(name = "employeeName")
     private String employeeName;

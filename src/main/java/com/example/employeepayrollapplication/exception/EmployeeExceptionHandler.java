@@ -20,7 +20,7 @@ public class EmployeeExceptionHandler {
         List<String> errMsg = errorList.stream()
                 .map(objError -> objError.getDefaultMessage())
                 .collect(Collectors.toList());
-        ResponseDTO responseDTO = new ResponseDTO("Exception while processing Rest request",errMsg);
+        ResponseDTO responseDTO = new ResponseDTO("Exception while processing Rest request",errMsg.toString());
         return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 }
